@@ -22,9 +22,9 @@
             --glass-bg: rgba(20, 22, 26, 0.45);
             --glass-border: rgba(255, 255, 255, 0.1);
             
-            /* Enhanced White Shadows for Cards */
-            --shadow-modern: 0 15px 35px -5px rgba(255, 255, 255, 0.12), 0 0 20px rgba(255, 255, 255, 0.08);
-            --shadow-hover: 0 20px 40px -5px rgba(255, 255, 255, 0.2), 0 0 30px rgba(var(--accent-rgb), 0.25);
+            /* Enhanced Themed Shadows for Cards (Now permanently in Accent Color) */
+            --shadow-modern: 0 15px 35px -5px rgba(var(--accent-rgb), 0.15), 0 0 25px rgba(var(--accent-rgb), 0.1);
+            --shadow-hover: 0 20px 40px -5px rgba(var(--accent-rgb), 0.3), 0 0 40px rgba(var(--accent-rgb), 0.4);
             
             /* Text Shadows */
             --text-glow: 0 4px 24px rgba(var(--accent-rgb), 0.4);
@@ -70,7 +70,7 @@
 
         /* Important Button Shadows */
         .btn-shadow {
-            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px -5px rgba(var(--accent-rgb), 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
         }
 
         /* Hide scrollbar for clean look but allow scroll */
@@ -118,18 +118,19 @@
     </button>
 
     <!-- HERO SECTION -->
-    <section class="relative h-screen w-full flex items-center justify-start overflow-hidden bg-black">
-        <!-- Background Image -->
+    <section class="relative h-screen w-full flex items-center justify-start overflow-hidden bg-[#050505]">
+        <!-- Background Image mit weichem Mask-Übergang nach links statt hartem Schnitt -->
         <img src="lester_bb.webp" 
              alt="Lester Buhrmann" 
-             class="absolute right-0 top-0 w-full md:w-3/4 lg:w-1/2 h-full object-cover object-center md:object-right filter brightness-75 z-0" />
+             style="-webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%); mask-image: linear-gradient(to right, transparent 0%, black 25%);"
+             class="absolute right-0 top-0 w-full md:w-3/4 lg:w-[60%] h-full object-cover object-center md:object-right z-0 opacity-90" />
         
-        <!-- Gradient Overlay: Startet später (10%), um das Bild weniger zu verdecken -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black from-10% via-black/60 via-40% to-transparent z-10"></div>
+        <!-- Gradient Overlay nur leicht für den Text, nicht mehr um das Bild zu verdecken -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/60 to-transparent z-10 w-full md:w-1/2"></div>
 
         <!-- Single Sentence: Kleiner und weiter links (pl-4/pl-8) -->
-        <div class="relative z-20 pl-4 md:pl-8 lg:pl-16 max-w-7xl w-full">
-            <p class="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter text-white max-w-lg text-shadow-dark leading-tight">
+        <div class="relative z-20 pl-6 md:pl-10 lg:pl-16 max-w-7xl w-full">
+            <p class="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white max-w-lg text-shadow-dark leading-tight">
                 Dein Potenzial ist messbar.<br>
                 <span class="text-gray-400">Machen wir es sichtbar.</span>
             </p>
@@ -195,8 +196,37 @@
         </div>
     </section>
 
+    <!-- KOSTENLOSE DOWNLOADS (Lead-Magnet) -->
+    <section class="relative py-20 px-6 md:px-16 bg-black/30 border-y border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+                <!-- Decorative background elements -->
+                <div class="absolute top-0 right-0 -mr-10 -mt-10 opacity-5 transition-opacity group-hover:opacity-10">
+                    <i data-lucide="file-down" class="w-64 h-64 text-accent"></i>
+                </div>
+                
+                <div class="relative z-10 flex items-start md:items-center gap-6">
+                    <div class="w-16 h-16 shrink-0 bg-gray-800/80 rounded-2xl flex items-center justify-center border border-gray-600 drop-shadow-md">
+                        <i data-lucide="file-text" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-gray-800 text-accent text-[10px] font-bold uppercase tracking-widest rounded-full mb-2 border border-gray-600">Ressource</span>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 text-glow">Ernährungsplan (2500 kcal)</h3>
+                        <p class="text-gray-400 leading-relaxed">Makro-optimierter Blueprint für konstanten Progress. Sofort anwendbar, absolut faktenbasiert.</p>
+                    </div>
+                </div>
+                
+                <!-- Lead Gen Button (Kann später ein Opt-In Pop-Up triggern) -->
+                <button class="w-full md:w-auto shrink-0 bg-white text-black font-bold text-lg px-8 py-4 rounded-xl btn-shadow hover:bg-gray-200 transition-colors flex justify-center items-center gap-3 relative z-10">
+                    Kostenlos laden
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- COACHING AUSWAHL (2 GROßE KACHELN) -->
-    <section class="relative py-24 px-6 md:px-16 bg-black/50 border-y border-white/5">
+    <section class="relative py-24 px-6 md:px-16 border-b border-white/5">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center text-glow">Dein Investment.</h2>
             
@@ -346,38 +376,6 @@
                 <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-400">
                     Sicherheit ist die Basis für langanhaltenden Progress. Wir arbeiten streng nach aktuellen Blutbildern. Keine blinden Stacks, sondern gezielter, evidenzbasierter Einsatz zur Minimierung von Nebenwirkungen bei maximalem Ertrag.
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEUE YOUTUBE SECTION -->
-    <section class="py-24 px-6 md:px-16 max-w-5xl mx-auto border-t border-white/5">
-        <h2 class="text-4xl font-bold mb-12 text-center text-glow">Neuestes aus dem Lab.</h2>
-        <div class="glass-card rounded-3xl p-4 md:p-8 relative overflow-hidden group">
-            <div class="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent pointer-events-none"></div>
-            
-            <div class="aspect-video w-full rounded-2xl overflow-hidden relative z-10 border border-gray-700/50 shadow-[0_0_30px_rgba(var(--accent-rgb),0.05)] transition-shadow duration-300">
-                <!-- HINWEIS ZUR AUTOMATISIERUNG: 
-                     Hier wird die Video-ID eingetragen (z.B. dQw4w9WgXcQ). 
-                     Für ein vollautomatisiertes NetGains-System kannst du diesen Iframe via JS (YouTube API) 
-                     oder durch ein Embed-Widget füllen lassen. -->
-                <iframe 
-                    width="100%" 
-                    height="100%" 
-                    src="https://www.youtube.com/embed/eX2qFMC8cFo" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    class="absolute top-0 left-0 w-full h-full">
-                </iframe>
-            </div>
-            
-            <div class="mt-8 flex justify-center z-10 relative">
-                <a href="https://www.youtube.com/@lesters_lab" target="_blank" class="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-4 rounded-xl font-bold tracking-wide hover:bg-red-700 transition-colors drop-shadow-lg hover:scale-105 duration-200">
-                    <i data-lucide="youtube" class="w-6 h-6"></i>
-                    Kanal abonnieren
-                </a>
             </div>
         </div>
     </section>
