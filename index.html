@@ -11,13 +11,23 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom CSS for Liquid Glass & Drop Shadows -->
+    <!-- Custom CSS for Liquid Glass & Drop Shadows & Theming -->
     <style>
         :root {
+            /* Theme Variables */
+            --accent-hex: #ffffff;
+            --accent-rgb: 255, 255, 255;
+
+            /* Glass Settings */
             --glass-bg: rgba(20, 22, 26, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --shadow-modern: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.03);
-            --text-glow: 0 4px 24px rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            
+            /* Enhanced White Shadows for Cards */
+            --shadow-modern: 0 15px 35px -5px rgba(255, 255, 255, 0.12), 0 0 20px rgba(255, 255, 255, 0.08);
+            --shadow-hover: 0 20px 40px -5px rgba(255, 255, 255, 0.2), 0 0 30px rgba(var(--accent-rgb), 0.25);
+            
+            /* Text Shadows */
+            --text-glow: 0 4px 24px rgba(var(--accent-rgb), 0.4);
             --text-shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.9);
         }
 
@@ -28,6 +38,11 @@
             overflow-x: hidden;
         }
 
+        /* Dynamic Accent Classes */
+        .text-accent { color: var(--accent-hex); transition: color 0.3s ease; }
+        .bg-accent { background-color: var(--accent-hex); transition: background-color 0.3s ease; }
+        .border-accent { border-color: var(--accent-hex); transition: border-color 0.3s ease; }
+
         /* Liquid Glass Card Style */
         .glass-card {
             background: var(--glass-bg);
@@ -35,16 +50,18 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow-modern);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(var(--accent-rgb), 0.4);
+            box-shadow: var(--shadow-hover);
         }
 
         /* Essential Text Shadows */
         .text-glow {
             text-shadow: var(--text-glow);
+            transition: text-shadow 0.3s ease;
         }
         
         .text-shadow-dark {
@@ -53,7 +70,7 @@
 
         /* Important Button Shadows */
         .btn-shadow {
-            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
         }
 
         /* Hide scrollbar for clean look but allow scroll */
@@ -81,24 +98,38 @@
             z-index: -1;
             pointer-events: none;
         }
+
+        /* Dynamic Theme Background Gradient */
+        .theme-bg-gradient {
+            background: radial-gradient(circle at 80% 10%, rgba(var(--accent-rgb), 0.06) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 90%, rgba(var(--accent-rgb), 0.04) 0%, transparent 60%);
+            transition: background 0.5s ease-in-out;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-gray-700 selection:text-white">
+<body class="antialiased selection:bg-gray-700 selection:text-white relative">
+
+    <!-- DYNAMISCHER HINTERGRUND -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none theme-bg-gradient"></div>
+
+    <!-- FARBWECHSEL BUTTON -->
+    <button id="theme-cycler" class="fixed bottom-6 right-6 z-50 p-4 rounded-full glass-card hover:scale-110 active:scale-95 group" aria-label="Farbe wechseln">
+        <i data-lucide="palette" class="w-6 h-6 text-accent"></i>
+    </button>
 
     <!-- HERO SECTION -->
-    <!-- Kein Header, keine Buttons, linke Seite Gradient zu Schwarz, rechte Seite Bild -->
     <section class="relative h-screen w-full flex items-center justify-start overflow-hidden bg-black">
         <!-- Background Image -->
         <img src="lester_bb.webp" 
              alt="Lester Buhrmann" 
-             class="absolute right-0 top-0 w-full md:w-3/4 lg:w-1/2 h-full object-cover object-center md:object-right filter brightness-75 drop-shadow-2xl z-0" />
+             class="absolute right-0 top-0 w-full md:w-3/4 lg:w-1/2 h-full object-cover object-center md:object-right filter brightness-75 z-0" />
         
-        <!-- Gradient Overlay: Startet früher und dominanter für das quadratische Bild -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black from-30% via-black/80 via-60% to-transparent z-10"></div>
+        <!-- Gradient Overlay: Startet später (10%), um das Bild weniger zu verdecken -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black from-10% via-black/60 via-40% to-transparent z-10"></div>
 
-        <!-- Single Sentence -->
-        <div class="relative z-20 px-6 md:px-16 lg:px-24 max-w-7xl w-full">
-            <p class="text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white max-w-2xl text-shadow-dark leading-tight">
+        <!-- Single Sentence: Kleiner und weiter links (pl-4/pl-8) -->
+        <div class="relative z-20 pl-4 md:pl-8 lg:pl-16 max-w-7xl w-full">
+            <p class="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter text-white max-w-lg text-shadow-dark leading-tight">
                 Dein Potenzial ist messbar.<br>
                 <span class="text-gray-400">Machen wir es sichtbar.</span>
             </p>
@@ -106,7 +137,7 @@
 
         <!-- Bouncing Arrow -->
         <a href="#expertise" class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
-            <i data-lucide="arrow-down" class="w-12 h-12 text-white drop-shadow-xl"></i>
+            <i data-lucide="arrow-down" class="w-12 h-12 text-accent drop-shadow-xl"></i>
         </a>
     </section>
 
@@ -120,7 +151,7 @@
             <!-- Kachel 1 -->
             <div class="glass-card rounded-2xl p-8 group">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="dumbbell" class="w-7 h-7 text-gray-200"></i>
+                    <i data-lucide="dumbbell" class="w-7 h-7 text-accent"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mb-4 text-glow">Trainingscoaching</h3>
                 <p class="text-gray-400 leading-relaxed">Biomechanisch perfektes Programming. Maximale Reizsetzung, optimales Load-Management und exakte Progression ohne Rätselraten.</p>
@@ -129,7 +160,7 @@
             <!-- Kachel 2 -->
             <div class="glass-card rounded-2xl p-8 group">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="utensils" class="w-7 h-7 text-gray-200"></i>
+                    <i data-lucide="utensils" class="w-7 h-7 text-accent"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mb-4 text-glow">Ernährungscoaching</h3>
                 <p class="text-gray-400 leading-relaxed">Datengetriebene Makro- und Mikronährstoffplanung. Abgestimmt auf deinen Stoffwechsel, Insulin-Sensitivität und den aktuellen Zyklus.</p>
@@ -138,25 +169,25 @@
             <!-- Kachel 3 -->
             <div class="glass-card rounded-2xl p-8 group">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="flask-conical" class="w-7 h-7 text-gray-200"></i>
+                    <i data-lucide="flask-conical" class="w-7 h-7 text-accent"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mb-4 text-glow">Peptidcoaching</h3>
                 <p class="text-gray-400 leading-relaxed">Wissenschaftlich fundierter Einsatz modernster Peptide für beschleunigte Regeneration, Verletzungsprävention und maximales Zellwachstum.</p>
             </div>
 
             <!-- Kachel 4 -->
-            <div class="glass-card rounded-2xl p-8 group lg:col-start-1 lg:col-end-2">
+            <div class="glass-card rounded-2xl p-8 group">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="pill" class="w-7 h-7 text-gray-200"></i>
+                    <i data-lucide="pill" class="w-7 h-7 text-accent"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mb-4 text-glow">Supplementplanung</h3>
                 <p class="text-gray-400 leading-relaxed">Gezielte Zufuhr evidenzbasierter Supplements. Keine Placebos, sondern messbare Unterstützung für Performance und Gesundheit.</p>
             </div>
 
-            <!-- Kachel 5 -->
-            <div class="glass-card rounded-2xl p-8 group lg:col-start-2 lg:col-end-4">
+            <!-- Kachel 5 (Nimmt 2 Spalten ein) -->
+            <div class="glass-card rounded-2xl p-8 group lg:col-span-2">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="activity" class="w-7 h-7 text-gray-200"></i>
+                    <i data-lucide="activity" class="w-7 h-7 text-accent"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mb-4 text-glow">Medikamenten Management</h3>
                 <p class="text-gray-400 leading-relaxed">Verantwortungsbewusstes, blutbildbasiertes Protokoll-Management. Risikominimierung durch konstantes Monitoring und Anpassung der Parameter. Safety first, Resultate als Konsequenz.</p>
@@ -173,15 +204,15 @@
                 <!-- Option 1: Einzelgespräch -->
                 <div class="glass-card rounded-3xl p-10 lg:p-14 flex flex-col justify-between relative overflow-hidden group">
                     <div class="absolute top-0 right-0 p-8 opacity-10">
-                        <i data-lucide="video" class="w-32 h-32"></i>
+                        <i data-lucide="video" class="w-32 h-32 text-accent"></i>
                     </div>
                     <div>
                         <h3 class="text-3xl font-bold mb-4 text-glow">Einzelgespräch</h3>
                         <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-md">Der punktuelle Deep-Dive. Ideal für zweite Meinungen, Troubleshooting bei Plateaus, detaillierte Blutbildanalysen oder die Ausarbeitung eines isolierten Protokolls.</p>
                         <ul class="space-y-4 mb-12 text-gray-300">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> 60 - 90 Min. Intensiv-Call via Video</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> Tiefgehende Analyse deiner Ist-Situation</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> Konkrete, sofort anwendbare Handlungsempfehlungen</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> 60 - 90 Min. Intensiv-Call via Video</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Tiefgehende Analyse deiner Ist-Situation</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Konkrete, sofort anwendbare Handlungsempfehlungen</li>
                         </ul>
                     </div>
                     <button class="w-full bg-transparent border border-white text-white font-bold text-lg py-4 rounded-xl btn-shadow hover:bg-white/10 transition-colors">
@@ -192,16 +223,16 @@
                 <!-- Option 2: 1:1 Dauerhaftes Coaching -->
                 <div class="glass-card rounded-3xl p-10 lg:p-14 flex flex-col justify-between relative overflow-hidden group border-t-2 border-t-green-500/50">
                     <div class="absolute top-0 right-0 p-8 opacity-10">
-                        <i data-lucide="shield-check" class="w-32 h-32"></i>
+                        <i data-lucide="shield-check" class="w-32 h-32 text-accent"></i>
                     </div>
                     <div>
-                        <span class="inline-block px-4 py-1 bg-green-900/30 text-green-400 text-xs font-bold uppercase tracking-wider rounded-full mb-4 border border-green-500/30 drop-shadow">Elite Betreuung</span>
+                        <span class="inline-block px-4 py-1 bg-gray-800 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-4 border border-gray-600 drop-shadow">Elite Betreuung</span>
                         <h3 class="text-3xl font-bold mb-4 text-glow">1:1 Dauerhaftes Coaching</h3>
                         <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-md">Die intensivste Betreuung. Engmaschiges Monitoring, tägliche Anpassungen und kompletter Fokus auf deine physische Maximierung. Wir überlassen nichts dem Zufall.</p>
                         <ul class="space-y-4 mb-12 text-gray-300">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Individuelle Pläne (Training/Ernährung/Protokolle)</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> 24/7 WhatsApp Priority Support</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Wöchentliche Video-Analysen</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Individuelle Pläne (Training/Ernährung/Protokolle)</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> 24/7 WhatsApp Priority Support</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Wöchentliche Video-Analysen</li>
                         </ul>
                     </div>
                     <button class="w-full bg-white text-black font-bold text-lg py-4 rounded-xl btn-shadow hover:bg-gray-200 transition-colors">
@@ -222,7 +253,7 @@
             <div class="glass-card rounded-2xl p-8 relative">
                 <i data-lucide="quote" class="absolute top-6 right-6 text-gray-600/30 w-12 h-12"></i>
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden">
+                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden border border-gray-600">
                         <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover grayscale">
                     </div>
                     <div>
@@ -237,7 +268,7 @@
             <div class="glass-card rounded-2xl p-8 relative">
                 <i data-lucide="quote" class="absolute top-6 right-6 text-gray-600/30 w-12 h-12"></i>
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden">
+                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden border border-gray-600">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover grayscale">
                     </div>
                     <div>
@@ -252,7 +283,7 @@
             <div class="glass-card rounded-2xl p-8 relative">
                 <i data-lucide="quote" class="absolute top-6 right-6 text-gray-600/30 w-12 h-12"></i>
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden">
+                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden border border-gray-600">
                         <img src="https://images.unsplash.com/photo-1590086782792-42dd2350140d?auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover grayscale">
                     </div>
                     <div>
@@ -275,7 +306,7 @@
             
             <div class="relative z-10">
                 <h3 class="text-2xl md:text-3xl font-black text-red-500 mb-3 text-glow tracking-wide uppercase">Aufnahmestopp Warnung</h3>
-                <p class="text-red-200/90 text-lg leading-relaxed font-medium">Aufgrund eines extrem erhöhten Anfrageaufkommens ist die Kapazität streng limitiert. Es werden <span class="text-white font-bold underline">nur noch Bewerbungen</span> von Athleten akzeptiert, die zu 100% committed sind. Keine Anfänger, keine Zeitverschwender.</p>
+                <p class="text-red-200/90 text-lg leading-relaxed font-medium">Aufgrund eines extrem erhöhten Anfrageaufkommens ist die Kapazität streng limitiert. Es werden <span class="text-white font-bold underline">nur noch Bewerbungen</span> von Menschen akzeptiert, die zu 100% committed sind. Keine Anfänger, keine Zeitverschwender.</p>
             </div>
         </div>
     </section>
@@ -288,7 +319,7 @@
             <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer">
                 <div class="p-6 flex justify-between items-center bg-black/20">
                     <h4 class="font-bold text-lg text-gray-200">Muss ich Wettkampf-Ambitionen haben?</h4>
-                    <i data-lucide="plus" class="w-6 h-6 text-gray-400 faq-icon transition-transform"></i>
+                    <i data-lucide="plus" class="w-6 h-6 text-accent faq-icon transition-transform"></i>
                 </div>
                 <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-400">
                     Nein, aber du musst die Mentalität eines Athleten mitbringen. Ich coache keine Leute, die Ausreden suchen. Wenn du bereit bist, die Arbeit zu investieren, bringe ich dich an dein genetisches Limit – egal ob für die Bühne oder für dich selbst.
@@ -299,7 +330,7 @@
             <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer">
                 <div class="p-6 flex justify-between items-center bg-black/20">
                     <h4 class="font-bold text-lg text-gray-200">Wie oft erfolgen die Plan-Anpassungen?</h4>
-                    <i data-lucide="plus" class="w-6 h-6 text-gray-400 faq-icon transition-transform"></i>
+                    <i data-lucide="plus" class="w-6 h-6 text-accent faq-icon transition-transform"></i>
                 </div>
                 <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-400">
                     Im 1:1 Coaching erfolgen Anpassungen datenbasiert nach jedem wöchentlichen Check-in oder bei Bedarf sofort. Im Abo-Modell werden Pläne im 14-Tage Rhythmus nach Auswertung deiner Metriken kalibriert.
@@ -310,11 +341,43 @@
             <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer">
                 <div class="p-6 flex justify-between items-center bg-black/20">
                     <h4 class="font-bold text-lg text-gray-200">Ist das Medikamenten-Management sicher?</h4>
-                    <i data-lucide="plus" class="w-6 h-6 text-gray-400 faq-icon transition-transform"></i>
+                    <i data-lucide="plus" class="w-6 h-6 text-accent faq-icon transition-transform"></i>
                 </div>
                 <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-400">
                     Sicherheit ist die Basis für langanhaltenden Progress. Wir arbeiten streng nach aktuellen Blutbildern. Keine blinden Stacks, sondern gezielter, evidenzbasierter Einsatz zur Minimierung von Nebenwirkungen bei maximalem Ertrag.
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEUE YOUTUBE SECTION -->
+    <section class="py-24 px-6 md:px-16 max-w-5xl mx-auto border-t border-white/5">
+        <h2 class="text-4xl font-bold mb-12 text-center text-glow">Neuestes aus dem Lab.</h2>
+        <div class="glass-card rounded-3xl p-4 md:p-8 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent pointer-events-none"></div>
+            
+            <div class="aspect-video w-full rounded-2xl overflow-hidden relative z-10 border border-gray-700/50 shadow-[0_0_30px_rgba(var(--accent-rgb),0.05)] transition-shadow duration-300">
+                <!-- HINWEIS ZUR AUTOMATISIERUNG: 
+                     Hier wird die Video-ID eingetragen (z.B. dQw4w9WgXcQ). 
+                     Für ein vollautomatisiertes NetGains-System kannst du diesen Iframe via JS (YouTube API) 
+                     oder durch ein Embed-Widget füllen lassen. -->
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/eX2qFMC8cFo" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    class="absolute top-0 left-0 w-full h-full">
+                </iframe>
+            </div>
+            
+            <div class="mt-8 flex justify-center z-10 relative">
+                <a href="https://www.youtube.com/@lesters_lab" target="_blank" class="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-4 rounded-xl font-bold tracking-wide hover:bg-red-700 transition-colors drop-shadow-lg hover:scale-105 duration-200">
+                    <i data-lucide="youtube" class="w-6 h-6"></i>
+                    Kanal abonnieren
+                </a>
             </div>
         </div>
     </section>
@@ -330,7 +393,7 @@
             </div>
             <div class="w-full md:w-2/3">
                 <h2 class="text-4xl md:text-6xl font-black mb-6 text-glow tracking-tighter uppercase">Lester Buhrmann</h2>
-                <h3 class="text-xl text-gray-400 font-bold mb-8 uppercase tracking-widest drop-shadow">NPC Athlet • Educator • Coach</h3>
+                <h3 class="text-xl text-gray-400 font-bold mb-8 uppercase tracking-widest drop-shadow text-accent">NPC Athlet • Educator • Coach</h3>
                 
                 <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
                     <p>
@@ -345,11 +408,11 @@
                 </div>
 
                 <div class="mt-10 flex gap-4">
-                    <a href="#" class="glass-card px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-white/10 transition-colors drop-shadow-md">
+                    <a href="https://www.youtube.com/@lesters_lab" target="_blank" class="glass-card px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-white/10 transition-colors drop-shadow-md">
                         <i data-lucide="youtube" class="w-5 h-5 text-red-500"></i>
-                        <span class="font-bold">YouTube Channel</span>
+                        <span class="font-bold">YouTube</span>
                     </a>
-                    <a href="#" class="glass-card px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-white/10 transition-colors drop-shadow-md">
+                    <a href="https://www.instagram.com/lesters_labs/" target="_blank" class="glass-card px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-white/10 transition-colors drop-shadow-md">
                         <i data-lucide="instagram" class="w-5 h-5 text-pink-500"></i>
                         <span class="font-bold">Instagram</span>
                     </a>
@@ -404,6 +467,27 @@
                     }
                 });
             });
+        });
+
+        // Theme Cycler Logic
+        const themes = [
+            { hex: '#ffffff', rgb: '255, 255, 255' }, // Weiß (Default)
+            { hex: '#3b82f6', rgb: '59, 130, 246' },  // Blau
+            { hex: '#10b981', rgb: '16, 185, 129' },  // Smaragdgrün
+            { hex: '#f43f5e', rgb: '244, 63, 94' },   // Rot
+            { hex: '#8b5cf6', rgb: '139, 92, 246' }   // Violett
+        ];
+        
+        let currentThemeIndex = 0;
+        const cyclerBtn = document.getElementById('theme-cycler');
+
+        cyclerBtn.addEventListener('click', () => {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const activeTheme = themes[currentThemeIndex];
+            
+            // Setze CSS Variablen im Root-Element
+            document.documentElement.style.setProperty('--accent-hex', activeTheme.hex);
+            document.documentElement.style.setProperty('--accent-rgb', activeTheme.rgb);
         });
     </script>
 </body>
