@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lester Buhrmann | Elite Bodybuilding Coaching. Datengetriebene Trainings- und Ernährungsplanung für maximalen Progress.">
+    <meta name="description" content="Lester Buhrmann - Elite Bodybuilding Coaching. Systematische, datengetriebene Trainings- und Ernährungsplanung, Biohacking & Wettkampfvorbereitung.">
+    <meta name="keywords" content="Bodybuilding Coaching, Lester Buhrmann, Fitness Coach, Biohacking, Peptide, TRT, Wettkampfvorbereitung, Ernährungsplan, Trainingsplan, Online Coaching">
+    <meta property="og:title" content="Lester Buhrmann | Elite Bodybuilding Coaching">
+    <meta property="og:description" content="Datengetriebene Trainings- und Ernährungsplanung für maximalen Progress.">
+    <meta property="og:image" content="lester2.webp">
+    <meta property="og:type" content="website">
     <title>Lester Buhrmann | Elite Bodybuilding Coaching</title>
     
+    <!-- Performance: Preload LCP Image -->
+    <link rel="preload" as="image" href="lester2.webp" fetchpriority="high">
+    
     <!-- Performance: DNS Prefetch & Preconnect für externe Ressourcen -->
-    <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://unpkg.com">
-    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     
     <!-- Tailwind CSS (Hinweis für NetGains: Für 100/100 PageSpeed in Produktion das CSS vorkompilieren!) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -150,15 +157,16 @@
     <div class="fixed inset-0 z-[-1] pointer-events-none theme-bg-gradient"></div>
 
     <!-- FARBWECHSEL BUTTON -->
-    <button id="theme-cycler" class="fixed bottom-6 right-6 z-50 p-4 rounded-full glass-card hover:scale-110 active:scale-95 group" aria-label="Farbe wechseln">
+    <button id="theme-cycler" class="fixed bottom-6 right-6 z-50 p-4 rounded-full glass-card hover:scale-110 active:scale-95 group" aria-label="Sekundärfarbe wechseln">
         <i data-lucide="palette" class="w-6 h-6 text-accent"></i>
     </button>
 
+    <main>
     <!-- HERO SECTION -->
     <section class="relative h-screen w-full flex items-center justify-start overflow-hidden bg-[#050505]">
         <!-- Performance: fetchpriority="high" für LCP-Bild, async decoding, explizite aspect-ratio/width zur CLS Vermeidung -->
-        <img src="lester_bb.webp" 
-             alt="Lester Buhrmann" 
+        <img src="lester2.webp" 
+             alt="Lester Buhrmann - Elite Bodybuilding Coach und studierter Physiker" 
              width="1000"
              height="1000"
              fetchpriority="high"
@@ -189,92 +197,47 @@
         
         <h2 class="text-4xl md:text-5xl font-bold mb-16 text-glow tracking-tight fade-in-up">Systematische Optimierung.</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Kachel 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Kachel 1: Training -->
             <div class="glass-card rounded-2xl p-8 group fade-in-up" style="transition-delay: 0.1s;">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="dumbbell" class="w-7 h-7 text-accent"></i>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4 text-glow">Trainingscoaching</h3>
-                <p class="text-gray-400 leading-relaxed">Biomechanisch perfektes Programming. Maximale Reizsetzung, optimales Load-Management und exakte Progression ohne Rätselraten.</p>
+                <h3 class="text-2xl font-semibold mb-4 text-glow">Training</h3>
+                <p class="text-gray-400 leading-relaxed">An die persönlichen Schwächen, Stärken und Zielsetzung angepasste Trainingsplanung.<br>Berücksichtigt anatomische Besonderheiten und Einschränkungen wie z.B. Verletzungen.</p>
             </div>
 
-            <!-- Kachel 2 -->
+            <!-- Kachel 2: Ernährung -->
             <div class="glass-card rounded-2xl p-8 group fade-in-up" style="transition-delay: 0.2s;">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="utensils" class="w-7 h-7 text-accent"></i>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4 text-glow">Ernährungscoaching</h3>
-                <p class="text-gray-400 leading-relaxed">Datengetriebene Makro- und Mikronährstoffplanung. Abgestimmt auf deinen Stoffwechsel, Insulin-Sensitivität und den aktuellen Zyklus.</p>
+                <h3 class="text-2xl font-semibold mb-4 text-glow">Ernährung</h3>
+                <p class="text-gray-400 leading-relaxed">Wir optimieren deinen Nährstoffzufuhr ohne Zeitaufwand und dogmatische Verbote.<br>Optimale Sättigung in der Diät oder müheloser Aufbau.</p>
             </div>
 
-            <!-- Kachel 3 -->
+            <!-- Kachel 3: Biohacking -->
             <div class="glass-card rounded-2xl p-8 group fade-in-up" style="transition-delay: 0.3s;">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="flask-conical" class="w-7 h-7 text-accent"></i>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4 text-glow">Peptidcoaching</h3>
-                <p class="text-gray-400 leading-relaxed">Wissenschaftlich fundierter Einsatz modernster Peptide für beschleunigte Regeneration, Verletzungsprävention und maximales Zellwachstum.</p>
+                <h3 class="text-2xl font-semibold mb-4 text-glow">Biohacking</h3>
+                <p class="text-gray-400 leading-relaxed">Egal ob Peptide, TRT oder PED's.<br>Ich plane mit dir Protokolle für jeden Prozess, den du in deinem Körper optimieren willst.<br>Von Hormonen über Verletzungen bis hin zu kognitivem Enhancement - Ich kümmere mich um Alles basierend auf der aktuellsten Datenlage und meiner über 10 jährigen Erfahrung als Biohacker, Wettkampf-Bodybuilder und Coach.</p>
             </div>
 
-            <!-- Kachel 4 -->
+            <!-- Kachel 4: Bodybuilding Beratung -->
             <div class="glass-card rounded-2xl p-8 group fade-in-up" style="transition-delay: 0.4s;">
-                <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="pill" class="w-7 h-7 text-accent"></i>
-                </div>
-                <h3 class="text-2xl font-semibold mb-4 text-glow">Supplementplanung</h3>
-                <p class="text-gray-400 leading-relaxed">Gezielte Zufuhr evidenzbasierter Supplements. Keine Placebos, sondern messbare Unterstützung für Performance und Gesundheit.</p>
-            </div>
-
-            <!-- Kachel 5 -->
-            <div class="glass-card rounded-2xl p-8 group fade-in-up" style="transition-delay: 0.5s;">
-                <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
-                    <i data-lucide="activity" class="w-7 h-7 text-accent"></i>
-                </div>
-                <h3 class="text-2xl font-semibold mb-4 text-glow">Medikamenten Management</h3>
-                <p class="text-gray-400 leading-relaxed">Verantwortungsbewusstes, blutbildbasiertes Protokoll-Management. Risikominimierung durch konstantes Monitoring und Anpassung der Parameter. Safety first, Resultate als Konsequenz.</p>
-            </div>
-
-            <!-- Kachel 6 -->
-            <div class="glass-card rounded-2xl p-8 group fade-in-up" style="transition-delay: 0.6s;">
                 <div class="w-14 h-14 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 border border-gray-700 drop-shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="target" class="w-7 h-7 text-accent"></i>
                 </div>
                 <h3 class="text-2xl font-semibold mb-4 text-glow">Bodybuilding Beratung</h3>
-                <p class="text-gray-400 leading-relaxed">Strategische Karriereplanung, Wettkampf-Timing und objektive Formanalyse. Für Athleten, die das große Ganze optimieren und fundierte Entscheidungen treffen wollen.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- KOSTENLOSE DOWNLOADS (Lead-Magnet) -->
-    <section class="relative py-20 px-6 md:px-16 bg-black/30 border-y border-white/5 fade-in-up">
-        <div class="max-w-4xl mx-auto">
-            <div class="glass-card rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 -mr-10 -mt-10 opacity-5 transition-opacity group-hover:opacity-10 pointer-events-none">
-                    <i data-lucide="file-down" class="w-64 h-64 text-accent"></i>
-                </div>
-                
-                <div class="relative z-10 flex items-start md:items-center gap-6">
-                    <div class="w-16 h-16 shrink-0 bg-gray-800/80 rounded-2xl flex items-center justify-center border border-gray-600 drop-shadow-md">
-                        <i data-lucide="file-text" class="w-8 h-8 text-accent"></i>
-                    </div>
-                    <div>
-                        <span class="inline-block px-3 py-1 bg-gray-800 text-accent text-[10px] font-bold uppercase tracking-widest rounded-full mb-2 border border-gray-600">Ressource</span>
-                        <h3 class="text-2xl md:text-3xl font-bold mb-2 text-glow">Ernährungsplan (2500 kcal)</h3>
-                        <p class="text-gray-400 leading-relaxed">Makro-optimierter Blueprint für konstanten Progress. Sofort anwendbar, absolut faktenbasiert.</p>
-                    </div>
-                </div>
-                
-                <button class="w-full md:w-auto shrink-0 bg-white text-black font-bold text-lg px-8 py-4 rounded-xl btn-shadow hover:bg-gray-200 transition-colors flex justify-center items-center gap-3 relative z-10">
-                    Kostenlos laden
-                    <i data-lucide="download" class="w-5 h-5"></i>
-                </button>
+                <p class="text-gray-400 leading-relaxed">Gerne begleite ich dich intensiv von Anfang bis Ende zu deinem ersten Wettkampf.<br>Eine Vorbereitung, an die man sich gerne für immer erinnert, ist das Ziel.<br>Gerne starte ich mit dir deine Laufbahn zur Pro Card.</p>
             </div>
         </div>
     </section>
 
     <!-- COACHING AUSWAHL (2 GROßE KACHELN) -->
-    <section class="relative py-24 px-6 md:px-16 border-b border-white/5">
+    <section class="relative py-24 px-6 md:px-16 border-y border-white/5">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center text-glow fade-in-up">Dein Investment.</h2>
             
@@ -288,12 +251,12 @@
                         <h3 class="text-3xl font-bold mb-4 text-glow">Einzelgespräch</h3>
                         <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-md">Der punktuelle Deep-Dive. Ideal für zweite Meinungen, Troubleshooting bei Plateaus, detaillierte Blutbildanalysen oder die Ausarbeitung eines isolierten Protokolls.</p>
                         <ul class="space-y-4 mb-12 text-gray-300">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> 60 - 90 Min. Intensiv-Call via Video</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Tiefgehende Analyse deiner Ist-Situation</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Konkrete, sofort anwendbare Handlungsempfehlungen</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5 shrink-0"></i> 90 Min. Intensiv-Call via Video</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5 shrink-0"></i> Tiefgehende Analyse deiner Ist-Situation</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5 shrink-0"></i> Konkrete, sofort anwendbare Handlungsempfehlungen</li>
                         </ul>
                     </div>
-                    <button class="w-full bg-transparent border border-white text-white font-bold text-lg py-4 rounded-xl btn-shadow hover:bg-white/10 transition-colors">
+                    <button class="w-full bg-transparent border border-white text-white font-bold text-lg py-4 rounded-xl btn-shadow hover:bg-white/10 transition-colors mt-auto">
                         Termin anfragen
                     </button>
                 </div>
@@ -306,14 +269,27 @@
                     <div>
                         <span class="inline-block px-4 py-1 bg-gray-800 text-accent text-xs font-bold uppercase tracking-wider rounded-full mb-4 border border-gray-600 drop-shadow">Elite Betreuung</span>
                         <h3 class="text-3xl font-bold mb-4 text-glow">1:1 Dauerhaftes Coaching</h3>
-                        <p class="text-gray-400 text-lg mb-8 leading-relaxed max-w-md">Die intensivste Betreuung. Engmaschiges Monitoring, tägliche Anpassungen und kompletter Fokus auf deine physische Maximierung. Wir überlassen nichts dem Zufall.</p>
-                        <ul class="space-y-4 mb-12 text-gray-300">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Individuelle Pläne (Training/Ernährung/Protokolle)</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> 24/7 WhatsApp Priority Support</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5"></i> Wöchentliche Video-Analysen</li>
+                        <p class="text-gray-400 text-lg mb-6 leading-relaxed max-w-md">Die intensivste Betreuung. Engmaschiges Monitoring, tägliche Anpassungen und kompletter Fokus auf deine physische Maximierung. Wir überlassen nichts dem Zufall.</p>
+                        <ul class="space-y-4 mb-8 text-gray-300">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5 shrink-0"></i> Individuelle Pläne (Training/Ernährung/Protokolle)</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5 shrink-0"></i> 24/7 WhatsApp Priority Support</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-accent w-5 h-5 shrink-0"></i> Wöchentliche Video-Analysen</li>
                         </ul>
+
+                        <!-- Pricing Container -->
+                        <div class="p-5 rounded-2xl bg-black/40 border border-white/10 mb-8 backdrop-blur-sm">
+                            <div class="flex justify-between items-center mb-4 border-b border-white/5 pb-4">
+                                <span class="text-gray-300 font-medium">1 Monat Laufzeit</span>
+                                <span class="text-2xl font-bold text-white">295€ <span class="text-sm text-gray-500 font-normal">/ m</span></span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 font-medium">6 Monate Laufzeit</span>
+                                <span class="text-2xl font-bold text-white text-glow">195€ <span class="text-sm text-gray-500 font-normal">/ m</span></span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-4 text-center leading-relaxed">Automatische Verlängerung bei Nicht-Kündigung über den Zahlungsanbieter.</p>
+                        </div>
                     </div>
-                    <button class="w-full bg-white text-black font-bold text-lg py-4 rounded-xl btn-shadow hover:bg-gray-200 transition-colors">
+                    <button class="w-full bg-white text-black font-bold text-lg py-4 rounded-xl btn-shadow hover:bg-gray-200 transition-colors mt-auto">
                         Bewerben
                     </button>
                 </div>
@@ -321,78 +297,12 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="py-32 px-6 md:px-16 max-w-7xl mx-auto relative">
-        <div class="ambient-glow top-20 right-0"></div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-16 text-glow fade-in-up">Resultate sprechen lauter.</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
-            <!-- Performance: loading="lazy", decoding="async", explicit width/height -->
-            <div class="glass-card rounded-2xl p-8 relative fade-in-up" style="transition-delay: 0.1s;">
-                <i data-lucide="quote" class="absolute top-6 right-6 text-gray-600/30 w-12 h-12"></i>
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden border border-gray-600">
-                        <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80" alt="Client Markus S." width="48" height="48" loading="lazy" decoding="async" class="w-full h-full object-cover grayscale">
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg">Markus S.</h4>
-                        <p class="text-sm text-gray-400">NPC Heavyweight</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 italic leading-relaxed">"Lester lässt keinen Spielraum für Fehler. Das Medikamenten-Management und die Peptid-Protokolle waren der Gamechanger für meine Offseason."</p>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="glass-card rounded-2xl p-8 relative fade-in-up" style="transition-delay: 0.2s;">
-                <i data-lucide="quote" class="absolute top-6 right-6 text-gray-600/30 w-12 h-12"></i>
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden border border-gray-600">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Client Dennis T." width="48" height="48" loading="lazy" decoding="async" class="w-full h-full object-cover grayscale">
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg">Dennis T.</h4>
-                        <p class="text-sm text-gray-400">Classic Physique</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 italic leading-relaxed">"10 kg reine Muskelmasse in 8 Monaten. Das Training ist brutal, die Ernährung auf das Gramm genau. Effizienz in Reinform."</p>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="glass-card rounded-2xl p-8 relative fade-in-up" style="transition-delay: 0.3s;">
-                <i data-lucide="quote" class="absolute top-6 right-6 text-gray-600/30 w-12 h-12"></i>
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gray-700 drop-shadow-md overflow-hidden border border-gray-600">
-                        <img src="https://images.unsplash.com/photo-1590086782792-42dd2350140d?auto=format&fit=crop&w=100&q=80" alt="Client Julian K." width="48" height="48" loading="lazy" decoding="async" class="w-full h-full object-cover grayscale">
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg">Julian K.</h4>
-                        <p class="text-sm text-gray-400">Amateur Athlet</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 italic leading-relaxed">"Die Blutbildanalysen und das darauf abgestimmte Supplement-Protokoll haben meine gesundheitlichen Werte massiv verbessert, während ich gewachsen bin."</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROTE WARN-SEKTION -->
-    <section class="py-10 px-6 max-w-5xl mx-auto fade-in-up">
-        <div class="glass-card !bg-red-950/40 !border-red-500/30 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-            <div class="absolute inset-0 bg-red-600/10 animate-pulse pointer-events-none"></div>
-            <i data-lucide="triangle-alert" class="w-20 h-20 text-red-500 shrink-0 drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]"></i>
-            <div class="relative z-10">
-                <h3 class="text-2xl md:text-3xl font-black text-red-500 mb-3 text-glow tracking-wide uppercase">Aufnahmestopp Warnung</h3>
-                <p class="text-red-200/90 text-lg leading-relaxed font-medium">Aufgrund eines extrem erhöhten Anfrageaufkommens ist die Kapazität streng limitiert. Es werden <span class="text-white font-bold underline">nur noch Bewerbungen</span> von Menschen akzeptiert, die zu 100% committed sind. Keine Anfänger, keine Zeitverschwender.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- FAQ SECTION -->
-    <section class="py-24 px-6 md:px-16 max-w-4xl mx-auto fade-in-up">
-        <h2 class="text-4xl font-bold mb-12 text-center text-glow">Systemfragen.</h2>
+    <section class="py-24 px-6 md:px-16 max-w-4xl mx-auto fade-in-up" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="text-4xl font-bold mb-12 text-center text-glow">Systemfragen.</h2>
         <div class="space-y-4">
             <!-- FAQ Items ... -->
-            <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer">
+            <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer" role="button" aria-expanded="false" tabindex="0">
                 <div class="p-6 flex justify-between items-center bg-black/20">
                     <h4 class="font-bold text-lg text-gray-200">Muss ich Wettkampf-Ambitionen haben?</h4>
                     <i data-lucide="plus" class="w-6 h-6 text-accent faq-icon transition-transform"></i>
@@ -401,7 +311,7 @@
                     Nein, aber du musst die Mentalität eines Athleten mitbringen. Ich coache keine Leute, die Ausreden suchen. Wenn du bereit bist, die Arbeit zu investieren, bringe ich dich an dein genetisches Limit – egal ob für die Bühne oder für dich selbst.
                 </div>
             </div>
-            <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer">
+            <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer" role="button" aria-expanded="false" tabindex="0">
                 <div class="p-6 flex justify-between items-center bg-black/20">
                     <h4 class="font-bold text-lg text-gray-200">Wie oft erfolgen die Plan-Anpassungen?</h4>
                     <i data-lucide="plus" class="w-6 h-6 text-accent faq-icon transition-transform"></i>
@@ -410,7 +320,7 @@
                     Im 1:1 Coaching erfolgen Anpassungen datenbasiert nach jedem wöchentlichen Check-in oder bei Bedarf sofort. Im Abo-Modell werden Pläne im 14-Tage Rhythmus nach Auswertung deiner Metriken kalibriert.
                 </div>
             </div>
-            <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer">
+            <div class="glass-card rounded-xl overflow-hidden faq-item cursor-pointer" role="button" aria-expanded="false" tabindex="0">
                 <div class="p-6 flex justify-between items-center bg-black/20">
                     <h4 class="font-bold text-lg text-gray-200">Ist das Medikamenten-Management sicher?</h4>
                     <i data-lucide="plus" class="w-6 h-6 text-accent faq-icon transition-transform"></i>
@@ -423,23 +333,23 @@
     </section>
 
     <!-- ÜBER LESTER -->
-    <section class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/10 mt-10 fade-in-up">
+    <section class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-white/10 mt-10 fade-in-up" aria-labelledby="about-heading">
         <div class="flex flex-col md:flex-row gap-12 items-center">
             <div class="w-full md:w-1/3 aspect-[3/4] rounded-2xl overflow-hidden glass-card p-2 drop-shadow-2xl">
                 <!-- Performance: loading="lazy", decoding="async", explicit width/height ratio -->
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop" 
-                     alt="Lester Buhrmann Stage" 
+                <img src="lester1.webp" 
+                     alt="Lester Buhrmann auf der Bühne in Top-Form" 
                      width="400" height="533"
                      loading="lazy" decoding="async"
                      class="w-full h-full object-cover rounded-xl filter grayscale contrast-125">
             </div>
             <div class="w-full md:w-2/3">
-                <h2 class="text-4xl md:text-6xl font-black mb-6 text-glow tracking-tighter uppercase">Lester Buhrmann</h2>
-                <h3 class="text-xl text-gray-400 font-bold mb-8 uppercase tracking-widest drop-shadow text-accent">NPC Athlet • Educator • Coach</h3>
+                <h2 id="about-heading" class="text-4xl md:text-6xl font-black mb-6 text-glow tracking-tighter uppercase">Lester Buhrmann</h2>
+                <h3 class="text-xl text-gray-400 font-bold mb-8 uppercase tracking-widest drop-shadow text-accent">NPC Athlet • Educator • Coach - Physiker</h3>
                 
                 <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
                     <p>
-                        Bekannt aus der NPC (u.a. Ruhr Cup & FIBO Pro Qualifier) stehe ich für die neue Generation des Bodybuildings: <strong class="text-white">Datengetrieben, transparent und rücksichtslos effizient.</strong>
+                        <strong class="text-white">Bekannt aus der NPC (u.a. Ruhr Cup & FIBO Pro Qualifier) und studierter Physiker stehe ich für die neue Generation des Bodybuildings: Datengetrieben, transparent und rücksichtslos effizient.</strong>
                     </p>
                     <p>
                         Als einer der am schnellsten wachsenden YouTuber in der DACH-Szene für tiefgreifende Analysen im Bereich <strong class="text-white text-glow">Hypertrophie, Peptide und Performance Enhancement</strong> mache ich Schluss mit veraltetem Bro-Science.
@@ -451,6 +361,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="mt-20 border-t border-white/5 bg-black/80 backdrop-blur-md pt-12 pb-6 px-6">
@@ -540,21 +451,34 @@
         document.addEventListener('DOMContentLoaded', () => {
             const faqItems = document.querySelectorAll('.faq-item');
             
+            const toggleFaq = (item) => {
+                const content = item.querySelector('.faq-content');
+                const icon = item.querySelector('.faq-icon');
+                
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-45');
+                    item.classList.add('bg-white/5');
+                    item.setAttribute('aria-expanded', 'true');
+                    if(window.lenis) setTimeout(() => window.lenis.resize(), 10); 
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-45');
+                    item.classList.remove('bg-white/5');
+                    item.setAttribute('aria-expanded', 'false');
+                    if(window.lenis) setTimeout(() => window.lenis.resize(), 10);
+                }
+            };
+
             faqItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const content = item.querySelector('.faq-content');
-                    const icon = item.querySelector('.faq-icon');
-                    
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        icon.classList.add('rotate-45');
-                        item.classList.add('bg-white/5');
-                        if(window.lenis) setTimeout(() => window.lenis.resize(), 10); 
-                    } else {
-                        content.classList.add('hidden');
-                        icon.classList.remove('rotate-45');
-                        item.classList.remove('bg-white/5');
-                        if(window.lenis) setTimeout(() => window.lenis.resize(), 10);
+                // Click Event
+                item.addEventListener('click', () => toggleFaq(item));
+                
+                // Keyboard Event (Barrierefreiheit)
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFaq(item);
                     }
                 });
             });
