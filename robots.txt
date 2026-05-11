@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lester-coach.com/sitemap.xml
